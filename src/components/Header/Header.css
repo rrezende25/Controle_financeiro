@@ -1,0 +1,9 @@
+.header_container{
+    height: 150px;
+    text-align: center;
+    background-color: teal;
+    padding-top: 20px;
+}
+.header_container h1{
+    color: white;
+}

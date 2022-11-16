@@ -1,0 +1,46 @@
+.add_item_container{
+    max-width: 1120px;
+    width: 98%;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px 10px;
+    border-radius: 5px;
+    position: relative;
+    top: -25px;
+}
+.add_item_container form{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.add_item_container .text_input{
+
+    appearance: textfield;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.400);
+    border-radius: 5px;
+    padding: 4px 6px;
+
+}
+#radio_group{
+    display: flex;
+    align-items: center;
+}
+.add_item_container .radio_input{
+    margin-left: 12px;
+    margin-right: 2px;
+}
+.add_item_container button{
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    background-color: teal;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s;
+    
+}
+.add_item_container button:hover{
+    scale: 1.05;
+}

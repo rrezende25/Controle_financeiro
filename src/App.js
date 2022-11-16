@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import AddItemForm from "./components/AddItemForm";
+import Header from "./components/Header";
+import ItemsList from "./components/ItemsList";
+import Resume from "./components/Resume";
+
 
 function App() {
+  const [items,setItems] = useState([])
+
+  async function additem(item){
+      setItems([...items,item])
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+     <Header></Header>
+     <Resume></Resume>
+     <AddItemForm additem={additem}></AddItemForm>
+     <ItemsList items={items}></ItemsList>
     </div>
   );
 }

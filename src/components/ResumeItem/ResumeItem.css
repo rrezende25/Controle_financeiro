@@ -1,0 +1,25 @@
+.resume_card{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    text-align: center;
+    padding: 20px 15px;
+    width: 30%;
+    gap: 8px;
+    border-radius: 5px;
+}
+.resume_title{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
+    font-weight: 400;
+}
+.resume_title svg{
+    width: 25px;
+    height: 25px;
+}
+.resume_value{
+    font-size: 26px;
+    font-weight: 600;
+}
