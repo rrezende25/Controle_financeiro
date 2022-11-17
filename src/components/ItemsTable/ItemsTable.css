@@ -1,0 +1,32 @@
+.items_table{
+    background-color: white;
+    border-radius: 5px;
+    max-width: 1120px;
+    width: 98%;
+    margin: 0 auto;
+    padding: 20px 15px;
+}
+.items_title{
+    display: flex;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+}
+.item_desc{
+    flex: 4;
+}
+.item_value{
+    flex: 3;
+}
+.item_type{
+    flex: 1;
+}
+.items_container{
+    display: flex;
+    margin: 10px 0;
+}
+.items_icons{
+    display: flex;
+    justify-content: space-between;
+}
+.delete_icon{
+    cursor: pointer;
+}

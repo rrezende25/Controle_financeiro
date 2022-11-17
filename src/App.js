@@ -1,22 +1,19 @@
-import { useState } from "react";
 import AddItemForm from "./components/AddItemForm";
 import Header from "./components/Header";
-import ItemsList from "./components/ItemsList";
+import ItemsTable from "./components/ItemsTable";
 import Resume from "./components/Resume";
+import { ItemsProvider } from './ItemsContext'
 
 
 function App() {
-  const [items,setItems] = useState([])
-
-  async function additem(item){
-      setItems([...items,item])
-  }
   return (
     <div>
-     <Header></Header>
-     <Resume></Resume>
-     <AddItemForm additem={additem}></AddItemForm>
-     <ItemsList items={items}></ItemsList>
+      <Header></Header>
+      <ItemsProvider>
+        <Resume></Resume>
+        <AddItemForm ></AddItemForm>
+        <ItemsTable ></ItemsTable>
+      </ItemsProvider>
     </div>
   );
 }

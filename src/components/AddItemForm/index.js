@@ -1,35 +1,42 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './AddItemForm.css'
+import {ItemsContext} from '../../ItemsContext'
 
 const AddItemForm = (props) => {
-    const [DescState,setDesc] = useState('')
-    const [ValueState,setValue] = useState('')
-    const [TypeState,setType] = useState(1)
-    function uppdateText(event){
-        if (event.target.name === 'Desc'){
+    const [DescState, setDesc] = useState('')
+    const [ValueState, setValue] = useState('')
+    const [ValueTypeState, setValueType] = useState(1)
+    const [items,setItems] = useContext(ItemsContext)
+    function uppdateText(event) {
+        if (event.target.name === 'Desc') {
             setDesc(event.target.value)
-        }else{
+        } else {
             setValue(event.target.value)
         }
     }
-    function uppdateRadio(event){
-        if(event.target.id ==='income'){
-            setType(1)
-        }else{
-            setType(-1)
+    function uppdateRadio(event) {
+        if (event.target.id === 'income') {
+            setValueType(1)
+        } else {
+            setValueType(-1)
         }
     }
-    function handleItems(event){
+    function saveItem(event) {
         event.preventDefault()
-        const item = {
-            name:DescState,
-            value:ValueState,
-            type:TypeState
+        if (DescState === '' || ValueState === '') {
+            alert("por favor informe a descrição e o valor!")
+        } else if (Number(ValueState) < 0) {
+            alert("informe o valor positivo e se é entrada ou saida!")
+        } else {
+            const item = {
+                desc: DescState,
+                value: ValueState,
+                type: ValueTypeState
+            }
+            setItems([...items,item])
+            setDesc('')
+            setValue('')
         }
-        setDesc('')
-        setValue('')
-        props.additem(item)
-
     }
 
     return (
@@ -41,15 +48,15 @@ const AddItemForm = (props) => {
                 </div>
                 <div>
                     <p>Valor</p>
-                    <input name='ItemValue' className='text_input' placeholder='Valor' onChange={uppdateText} type='number' value={ValueState}></input>
+                    <input name='ItemValue' className='text_input' placeholder='Valor' onChange={uppdateText} value={ValueState} type='number'></input>
                 </div>
                 <div id='radio_group'>
-                    <input id='income' className='radio_input' type='radio' name='entrada_saida' value={'entrada'} onChange={uppdateRadio} defaultChecked></input>
+                    <input id='income' className='radio_input' type='radio' name='entrada_saida' onChange={uppdateRadio} defaultChecked></input>
                     <label htmlFor='income'>Entrada</label>
-                    <input id='expense' className='radio_input' type='radio' name='entrada_saida' value={'entrada'} onChange={uppdateRadio}></input>
+                    <input id='expense' className='radio_input' type='radio' name='entrada_saida' onChange={uppdateRadio}></input>
                     <label htmlFor='expense'>Saída</label>
                 </div>
-                <button onClick={handleItems}>ADICIONAR</button>
+                <button onClick={saveItem}>ADICIONAR</button>
             </form>
         </section>
     )
